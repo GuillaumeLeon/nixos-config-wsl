@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs , ... }:
 {
 imports = 
 [ 
@@ -16,6 +15,7 @@ imports =
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    #dotfile
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -25,12 +25,18 @@ imports =
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    #".config/nvim".source = dotfiles/.config/nvim;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  };
+
+  home.file.".config/nvim".source = fetchTarball {
+	  url = "https://github.com/GuillaumeLeon/dotfiles/releases/download/1.0.0/nvim.tar.gz";
+sha256 = "072wm7gvq1fk5cd0p99a1jzglhjql7was3j1r19m8k3s535psd66";
   };
 
   # Home Manager can also manage your environment variables through
