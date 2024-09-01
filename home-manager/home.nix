@@ -4,6 +4,8 @@
 imports = 
 [ 
   ./zsh.nix
+  ./git.nix
+  ./neovim.nix
 ];
   home.username = "guillaume";
   home.homeDirectory = "/home/guillaume";
