@@ -11,11 +11,18 @@
     };
   };
 
-   outputs = inputs@{ nixpkgs, home-manager, nixos-wsl, ... }: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+  outputs =
+    inputs@{
+      nixpkgs,
+      home-manager,
+      nixos-wsl,
+      ...
+    }:
+    {
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-	   nixos-wsl.nixosModules.default
+          nixos-wsl.nixosModules.default
           {
             system.stateVersion = "24.05";
             wsl.enable = true;
@@ -31,6 +38,6 @@
             # arguments to home.nix
           }
         ];
+      };
     };
-  };
 }

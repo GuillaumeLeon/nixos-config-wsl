@@ -5,13 +5,17 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ lib, pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = 
-    [
-     ./user.nix
-    ];
+  imports = [
+    ./user.nix
+  ];
 
   wsl.enable = true;
   wsl.defaultUser = "guillaume";
@@ -20,20 +24,24 @@
   main-user.userName = "guillaume";
 
   time.timeZone = "Europe/Paris";
-  
+
   i18n.defaultLocale = "en_US.UTF-8";
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   environment.systemPackages = with pkgs; [
     vim
+    neovim
     wget
     curl
-    neovim
     git
     zsh
+    nixfmt-rfc-style
   ];
 
   programs.zsh.enable = true;

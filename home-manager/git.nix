@@ -1,8 +1,8 @@
-{...}:
+{ ... }:
 {
-programs.git = {
+  programs.git = {
     enable = true;
-    userName  = "GuillaumeLeon";
+    userName = "GuillaumeLeon";
     userEmail = "Guillaume.Leon@protonmail.com";
   };
 }
