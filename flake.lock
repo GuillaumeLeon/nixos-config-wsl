@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725260588,
+        "narHash": "sha256-fZbpKxB8NAVyeGE9K6C8wX17QmZAzUwro2MBQkmblow=",
+        "owner": "GuillaumeLeon",
+        "repo": "dotfiles",
+        "rev": "57f5227daefc6698a10992cc080546904a836ea9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GuillaumeLeon",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -109,6 +125,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2"

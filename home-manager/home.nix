@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  dotfiles,
+  ...
+}:
 {
   imports = [
     ./zsh.nix
@@ -40,9 +45,13 @@
     # '';
   };
 
-  home.file.".config/nvim".source = fetchTarball {
-    url = "https://github.com/GuillaumeLeon/dotfiles/releases/download/1.0.0/nvim.tar.gz";
-    sha256 = "072wm7gvq1fk5cd0p99a1jzglhjql7was3j1r19m8k3s535psd66";
+  # home.file.".config/nvim".source = fetchTarball {
+  #   url = "https://github.com/GuillaumeLeon/dotfiles/releases/download/1.0.0/nvim.tar.gz";
+  #   sha256 = "072wm7gvq1fk5cd0p99a1jzglhjql7was3j1r19m8k3s535psd66";
+  # };
+  home.file.".config/nvim" = {
+    source = "${dotfiles}/.config/nvim";
+    recursive = true;
   };
 
   # Home Manager can also manage your environment variables through

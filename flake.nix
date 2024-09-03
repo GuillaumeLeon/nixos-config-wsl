@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
+    dotfiles = {
+      url = "github:GuillaumeLeon/dotfiles";
+      flake = false; # Set to true if the repo is also a flake
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +21,7 @@
       nixpkgs,
       home-manager,
       nixos-wsl,
+      dotfiles,
       ...
     }:
     {
@@ -32,6 +38,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs dotfiles;
+            };
             home-manager.users.guillaume = import ./home-manager/home.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass

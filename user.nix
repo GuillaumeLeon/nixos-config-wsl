@@ -15,7 +15,7 @@ in
     userName = lib.mkOption {
       default = "guillaume";
       description = ''
-        		username
+        username
       '';
     };
 

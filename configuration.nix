@@ -11,7 +11,6 @@
   inputs,
   ...
 }:
-
 {
   imports = [
     ./user.nix
